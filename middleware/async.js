@@ -1,9 +1,10 @@
-module.exports = function asyncMiddelware(handler) {
+module.exports = function (handler) {
   return async (req, res, next) => {
     try {
-      handler(req, res);
-    } catch (ex) {
+      await handler(req, res);
+    }
+    catch(ex) {
       next(ex);
     }
-  }
+  };  
 }
